@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 21 Sep, 2019 2:43:36 PM by Hibernate Tools 5.2.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="wb12to4" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.pojo.Register" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="register">
+        <id name="rid" type="java.lang.Integer">
+            <column name="rid"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="name" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="name"/>
+        </property>
+        <property generated="never" lazy="false" name="email" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="email"/>
+        </property>
+        <property generated="never" lazy="false" name="password" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="password"/>
+        </property>
+        <property generated="never" lazy="false" name="address" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="address"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="orders" optimistic-lock="true" sort="unsorted" table="order">
+            <key on-delete="noaction">
+                <column name="rid"/>
+            </key>
+            <one-to-many class="com.pojo.Order" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

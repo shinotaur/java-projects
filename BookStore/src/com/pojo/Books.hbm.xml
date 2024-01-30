@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 21 Sep, 2019 2:43:36 PM by Hibernate Tools 5.2.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="wb12to4" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.pojo.Books" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="books">
+        <id name="bid" type="java.lang.Integer">
+            <column name="bid"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="bookId" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="bookId"/>
+        </property>
+        <property generated="never" lazy="false" name="bookname" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="bookname"/>
+        </property>
+        <property generated="never" lazy="false" name="authorName" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="authorName"/>
+        </property>
+        <property generated="never" lazy="false" name="price" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="price" precision="22" scale="0"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="orders" optimistic-lock="true" sort="unsorted" table="order">
+            <key on-delete="noaction">
+                <column name="bid"/>
+            </key>
+            <one-to-many class="com.pojo.Order" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>
